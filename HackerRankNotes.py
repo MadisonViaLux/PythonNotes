@@ -25,29 +25,6 @@ equalizeArray([1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 8, 8, 8])
 # #3 this allows us to count the appended list as our intended result beacuse it's adding to it everything that's not the highest even number.
 
 # def equalizeArrayNon(data):
-#     non_duplicates = []
-#     dups = []
-#     for i in range(len(data)):
-#         # if i is equal non_dups append that i into our non_dups list
-#         if data[i] not in non_duplicates:
-#             non_duplicates.append(data[i])
-#         else:
-#             # otherwise then remove i from non_dups and append i into dups
-#             non_duplicates.remove(data[i])
-#             dups.append(data[i])
-#         # edge case to compare the list at the end with dups and if anything in the non_dups is in the dups then remove that value
-#         for j in range(len(non_duplicates)):
-#             if non_duplicates[j] in dups:
-#                 non_duplicates.remove(non_duplicates[j])
-#             else:
-#                 continue
-#     pointer = len(non_duplicates)
-#     print(pointer)
-#     return pointer
-#
-# equalizeArrayNon([1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 8, 8, 8])
-
-# def equalizeArrayNon(data):
 #
 #     extraArr =[]
 #
