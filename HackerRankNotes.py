@@ -8,7 +8,6 @@ def equalizeArray(arr):
     for i in arr:
         # 1
         AC = arr.count(i)
-        # print(AC)
         # 2
         if AC >= x:
             x = AC
