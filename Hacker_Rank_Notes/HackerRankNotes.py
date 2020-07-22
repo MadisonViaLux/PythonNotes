@@ -1,24 +1,24 @@
 ##############################################################################################################
 
 # Equalize Array
-def equalizeArray(arr):
-    x = 2 #<--------------------from 0 to 2
-    extraArr = []
-
-    for i in arr:
-        # 1
-        AC = arr.count(i)
-        # 2
-        if AC >= x:
-            x = AC
-        elif AC < x:
-            extraArr.append(i)
-    # 3
-    le = len(extraArr)
-    print(le)
-    return le
-
-equalizeArray([1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 8, 8, 8])
+# def equalizeArray(arr):
+#     x = 2 #<--------------------from 0 to 2
+#     extraArr = []
+#
+#     for i in arr:
+#         # 1
+#         AC = arr.count(i)
+#         # 2
+#         if AC >= x:
+#             x = AC
+#         elif AC < x:
+#             extraArr.append(i)
+#     # 3
+#     le = len(extraArr)
+#     print(le)
+#     return le
+#
+# equalizeArray([1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 8, 8, 8])
 # equalizeArray([1, 2, 2, 4])
 # #1 we want to loop through the array and count how many there are of each item in the array.
 # #2 then store the largest number of that count to x, and if it's smaller we append that to another list.
@@ -121,8 +121,6 @@ equalizeArray([1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 8, 8, 8])
 
 
 # Adding Lowest Numbers
-# my_data = [[8, 4], [90, -1, 3], [9, 62], [-7, -1, -56, -6], [201], [76, 18]]
-#
 # def addingLowestNumbers(data):
 #
 #     newList = []
@@ -138,11 +136,12 @@ equalizeArray([1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 8, 8, 8])
 #                     x = j
 #             newList.append(x)
 #
-#     print(newList)
+#     # print(newList)
 #     print(sum(newList))
 #     return sum(newList)
 #
-# addingLowestNumbers(my_data)
+#
+# addingLowestNumbers([[8, 4], [90, -1, 3], [9, 62], [-7, -1, -56, -6], [201], [76, 18]])
 
 
 
@@ -153,21 +152,41 @@ equalizeArray([1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 8, 8, 8])
 
 
 # Balanced Brackets
-# opening = ['[', '(', '{', '|']
-# closing = [']', ')', '}', '|']
-#
 # def balancedBrackets(string):
-#     for i in range(0, len(string)):
-#         open_index = i
-#         if i in opening:
-#             for j in range(open_index + 1, len(string)):
-#                 if j in closing:
-#                     if opening.len(open_index) == closing.len(j):
-#                         print('True')
-#                     else:
-#                         j += 1
-#                 elif j == len(string)-1:
-#                     print('False')
+#     # Create a stack
+#     stack = []
+#     # Pipes to count amount of pipes
+#     pipes = 0
+#     # Store all brackets in dict
+#     brackets = {'[': ']', '(': ')', '{': "}", '|': '|'}
+#     # Loop through each letter in string
+#     for s in string:
+#         # If opening bracket....
+#         if s in brackets:
+#             # Check if its a pip
+#             if s == '|':
+#                 pipes += 1
+#                 # If amount of pipes is even... and top of stack is a pipe...
+#                 if pipes % 2 == 0 and brackets[stack[-1]] == s:
+#                     # Pop off stack
+#                     stack.pop()
+#                     continue
+#             # Append to stack
+#             stack.append(s)
+#             continue
+#         # If current string is not a closing bracket... skip iteration
+#         if s not in brackets.values():
+#             continue
+#
+#         # If top of stack's opening string is partner closing string... pop off stack
+#         if brackets[stack[-1]] == s:
+#             stack.pop()
+#         else:
+#             return 0
+#     print(len(stack) == 0)
+#     return len(stack) == 0
+#
+#
 # balancedBrackets("yes, and yo{}u need to ma[]ke sure they don't overlap")
 
 
@@ -201,10 +220,10 @@ equalizeArray([1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 8, 8, 8])
 #         toBeReturned = len(poppedLetters)
 #     else:
 #         while (valA != valB):
-#             print("\nbiggerArr", biggerArr)
-#             print("smallArr", smallArr)
-#             print(f"Comparing *{biggerArr[x]}* from biggerB to *{smallArr[x]}* from smallA")
-#             print("Letter removed list", poppedLetters)
+#             # print("\nbiggerArr", biggerArr)
+#             # print("smallArr", smallArr)
+#             # print(f"Comparing *{biggerArr[x]}* from biggerB to *{smallArr[x]}* from smallA")
+#             # print("Letter removed list", poppedLetters)
 #             if smallArr[x] != biggerArr[x]:
 #                 if biggerArr[x] not in smallArr[x:]:
 #                     poppedLetters.append(biggerArr[x])
@@ -248,10 +267,9 @@ equalizeArray([1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 8, 8, 8])
 #                 arr[cur_index], arr[smallest_index] = arr[smallest_index], arr[cur_index]
 #
 #         # TO-DO: swap
-#
+#     print(arr)
 #     return arr
 #
-# print(selection_sort([1, 7, 65, 4987, 55, 69, 87]))
 # selection_sort([1, 7, 65, 4987, 55, 69, 87])
 
 
@@ -296,3 +314,109 @@ equalizeArray([1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 8, 8, 8])
 #             x += 1
 #
 # partitionArray(3, [1, 3, 2, 4, 6, 5, 7, 8])
+
+
+
+
+
+
+
+
+
+# Remove Kth Linked List Node
+# def removeKthLinkedListNode(head, k):
+#     # Iterate through the linkedlist to obtain the length
+#     length = 0
+#     current_node = head
+#     while current_node:
+#         current_node = current_node.next
+#         length += 1
+#     print(length)
+#
+#     # if k > length return head
+#     if k > length:
+#         return head
+#
+#     # If k is equal to length head must be removed
+#     # Return the node after head
+#     if k == length:
+#         return head.next
+#
+#     # Subtract the length by k to get the location of the node
+#     k_index = length - k
+#     counter = 0
+#
+#     # Reset current_node to head
+#     current_node = head
+#
+#     # Iterate through list one more time removing the node at length - k
+#     while current_node:
+#
+#         # Check if counter is right before k node...
+#         if counter == k_index - 1:
+#             # Grab node after k node
+#             node_after_k = current_node.next.next
+#             # Set current_node's next to node_after_k
+#             current_node.next = node_after_k
+#             # Break out of loop since node has been deleted
+#             break
+#         # Increment counter and move current_node forward
+#         current_node = current_node.next
+#         counter += 1
+#     print(head)
+#     return head
+
+
+
+
+
+
+
+
+
+# Three Number Sum
+def threeNumberSum(arr, target):
+    # Create a hashtable to store needed_num : (first_num, second_num)
+    hashtable = {}
+    # Create a list to return
+    sums = set()
+
+    # Loop through arr
+    for i in range(len(arr) - 1):
+        for j in range(1, len(arr)):
+            if arr[i] == arr[j]:
+                continue
+            # Add both nums and subtract from target
+            needed_num = target - (arr[i] + arr[j])
+            # Store key:value in hash
+            hashtable[needed_num] = [arr[i], arr[j]]
+
+    # Loop one more time...
+    for i in range(len(arr)):
+        # check if key is in arr
+        if arr[i] in hashtable:
+            # number in arr is not in the hashtable arr value(must be distinct)
+            if arr[i] not in hashtable[arr[i]]:
+                # form list and sort
+                sum = hashtable[arr[i]].copy()
+                sum.append(arr[i])
+                sum = sorted(sum)
+                # Add to set
+                sums.add(tuple(sum))
+    # Convert set into list
+    sums = list(sums)
+    # Convert tuples in list
+    sums = [list(tup) for tup in sums]
+    # print(sorted(sums))
+    return sorted(sums)
+
+
+threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0)
+
+
+
+
+
+
+
+
