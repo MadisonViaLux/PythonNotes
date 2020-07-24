@@ -373,49 +373,73 @@
 
 
 # Three Number Sum
-def threeNumberSum(arr, target):
-    # Create a hashtable to store the third number as a key to the values of the other two numbers ([3:1,2])
-    hashtable = {}
-    # Create a list to return the values after converted without dupes
-    sum_list = set()
+# def threeNumberSum(arr, target):
+#     # Create a hashtable to store the third number as a key to the values of the other two numbers ([3:1,2])
+#     hashtable = {}
+#     # Create a list to return the values after converted without dupes
+#     sum_list = set()
+#
+#     # Double loop through the arr to compare all numbers
+#     for i in arr:
+#         for j in arr:
+#
+#             # Pass over if same num
+#             if i == j:
+#                 continue
+#
+#             # To get the third_num, we'll add both i and j and subtract it from the *target
+#             third_num = target - (i + j)
+#             # Then store them in the hashtable as the key:value pair ([3:1,2])
+#             hashtable[third_num] = [i, j]
+#             # print(hashtable)
+#
+#     # Looping a second time
+#     for i in arr:
+#
+#         # Check if the nums from the arr, [i as key], are in the hashtable [key]
+#         if i in hashtable:
+#
+#             # Then check to see that arr[i] isn't in the hashtable arr value, each number must be distinct
+#             if i not in hashtable[i]:
+#                 # Setting new_list to the values of the 3rd number ([#:1,2])
+#                 new_list = hashtable[i]
+#                 # Taking the key, 3rd number, and appending it to new_list ([1,2,3])
+#                 new_list.append(i)
+#                 # Sorting new_list so it's in order
+#                 new_list = sorted(new_list)
+#                 # Adding new_list as a Tuple into sum_list to remove dupes
+#                 sum_list.add(tuple(new_list))
+#
+#     # Converting the Tuples back into list format
+#     sum_list = [list(tup) for tup in sum_list]
+#
+#     return sorted(sum_list)
+#
+#
+# print(threeNumberSum([12, 3, 1, 2, -6, 5, 0, -8, -1, 6, -5], 0)) #<---------- [[-8, 2, 6], [-8, 3, 5], [-6, 0, 6], [-6, 1, 5], [-5, -1, 6], [-5, 0, 5], [-5, 2, 3], [-1, 0, 1]]
+# # print(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0)) #<---------- [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
 
-    # Double loop through the arr to compare all numbers
+
+
+
+def threeNumberSum(arr, target):
+    new_list = set()
     for i in arr:
         for j in arr:
-
-            # Pass over if same num
             if i == j:
                 continue
-
-            # To get the third_num, we'll add both i and j and subtract it from the *target
             third_num = target - (i + j)
-            # Then store them in the hashtable as the key:value pair ([3:1,2])
-            hashtable[third_num] = [i, j]
-            # print(hashtable)
-
-    # Looping a second time
-    for i in arr:
-
-        # Check if the nums from the arr, [i as key], are in the hashtable [key]
-        if i in hashtable:
-
-            # Then check to see that arr[i] isn't in the hashtable arr value, each number must be distinct
-            if i not in hashtable[i]:
-                # Setting new_list to the values of the 3rd number ([#:1,2])
-                new_list = hashtable[i]
-                # Taking the key, 3rd number, and appending it to new_list ([1,2,3])
-                new_list.append(i)
-                # Sorting new_list so it's in order
-                new_list = sorted(new_list)
-                # Adding new_list as a Tuple into sum_list to remove dupes
-                sum_list.add(tuple(new_list))
-
-    # Converting the Tuples back into list format
-    sum_list = [list(tup) for tup in sum_list]
-
-    return sorted(sum_list)
+            paired = [i, j]
+            if third_num in arr:
+                if third_num not in paired:
+                    list_nums = [i, j, third_num]
+                    new_list.add(tuple(sorted(list_nums)))
+    new_list = [list(tup) for tup in new_list]
+    return sorted(new_list)
 
 
 print(threeNumberSum([12, 3, 1, 2, -6, 5, 0, -8, -1, 6, -5], 0)) #<---------- [[-8, 2, 6], [-8, 3, 5], [-6, 0, 6], [-6, 1, 5], [-5, -1, 6], [-5, 0, 5], [-5, 2, 3], [-1, 0, 1]]
 # print(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0)) #<---------- [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
+
+
 
