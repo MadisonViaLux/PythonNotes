@@ -155,39 +155,43 @@
 # def balancedBrackets(string):
 #     # Create a stack
 #     stack = []
-#     # Pipes to count amount of pipes
+#     # Create place to store number of pipes
 #     pipes = 0
-#     # Store all brackets in dict
-#     brackets = {'[': ']', '(': ')', '{': "}", '|': '|'}
-#     # Loop through each letter in string
-#     for s in string:
-#         # If opening bracket....
-#         if s in brackets:
-#             # Check if its a pip
-#             if s == '|':
+#     # Store all the brackets in a dict
+#     brackets = {'[': ']', '{': "}", '(': ')', '|': '|'}
+#
+#     # First we want to loop through each letter in the string for an opening bracket
+#     for x in string:
+#
+#         # When we find an opening bracket
+#         if x in brackets:
+#
+#             # We want to check to see if it's a pipe
+#             if x == '|':
+#                 # Increment the number of pipes
 #                 pipes += 1
-#                 # If amount of pipes is even... and top of stack is a pipe...
-#                 if pipes % 2 == 0 and brackets[stack[-1]] == s:
-#                     # Pop off stack
+#                 # Then if the number of pipes is even and the top of stack is a pipe
+#                 if pipes % 2 == 0 and brackets[stack[-1]] == x:
+#                     # Delete or pop off the stack and continue
 #                     stack.pop()
 #                     continue
-#             # Append to stack
-#             stack.append(s)
-#             continue
-#         # If current string is not a closing bracket... skip iteration
-#         if s not in brackets.values():
+#
+#             # Append the bracket to stack
+#             stack.append(x)
 #             continue
 #
-#         # If top of stack's opening string is partner closing string... pop off stack
-#         if brackets[stack[-1]] == s:
+#         # To move through the string if not a bracket, skip over and continue without breaking loop
+#         if x not in brackets.values():
+#             continue
+#
+#         # If the top of stack's opening string is the corresponding closing string, remove or pop off stack
+#         if brackets[stack[-1]] == x:
 #             stack.pop()
 #         else:
 #             return 0
-#     print(len(stack) == 0)
+#
+#     # Returning statement if equal, "True/Fale"
 #     return len(stack) == 0
-#
-#
-# balancedBrackets("yes, and yo{}u need to ma[]ke sure they don't overlap")
 
 
 
@@ -294,7 +298,6 @@
 #             if len(currentArr) != len(set(currentArr)):
 #                 # print("step 4")
 #                 return print("No")
-#
 #             elif k >= len(newArr):
 #                 # print("step 5")
 #                 endArr = numbers[-k:]
@@ -309,7 +312,6 @@
 #                 # print("step 8")
 #                 partitionArray(k, newArr)
 #                 return
-#
 #         else:
 #             x += 1
 #
@@ -325,45 +327,41 @@
 
 # Remove Kth Linked List Node
 # def removeKthLinkedListNode(head, k):
-#     # Iterate through the linkedlist to obtain the length
+#     # Setting the length and setting current_node to head
 #     length = 0
 #     current_node = head
+#     # Obtaining the length of the LL by iterating through it
 #     while current_node:
 #         current_node = current_node.next
 #         length += 1
-#     print(length)
 #
-#     # if k > length return head
+#     # If k is > than length, return head
 #     if k > length:
 #         return head
 #
-#     # If k is equal to length head must be removed
-#     # Return the node after head
+#     # If k is = to length then the head must be removed, then we'll return the next node after head
 #     if k == length:
 #         return head.next
 #
-#     # Subtract the length by k to get the location of the node
-#     k_index = length - k
+#     # Subtracting the length by k to get the location of the desired node and resetting the current_node to head
+#     index_k = length - k
 #     counter = 0
-#
-#     # Reset current_node to head
 #     current_node = head
 #
-#     # Iterate through list one more time removing the node at length - k
+#     # Iterating through the LL one more time to remove the node at position length - k
 #     while current_node:
-#
-#         # Check if counter is right before k node...
-#         if counter == k_index - 1:
-#             # Grab node after k node
-#             node_after_k = current_node.next.next
-#             # Set current_node's next to node_after_k
-#             current_node.next = node_after_k
-#             # Break out of loop since node has been deleted
+#         # Checking if the counter is right before the k node
+#         if counter == index_k - 1:
+#             # Grabbing the node *after k
+#             next_k_node = current_node.next.next
+#             # Then setting current_node to next_k_node, basically jumping chain and removing desired node
+#             current_node.next = next_k_node
+#             # Break the loop because node was deleted
 #             break
-#         # Increment counter and move current_node forward
+#         # Moving the node forward and incrementing the counter
 #         current_node = current_node.next
 #         counter += 1
-#     print(head)
+#
 #     return head
 
 
@@ -376,47 +374,48 @@
 
 # Three Number Sum
 def threeNumberSum(arr, target):
-    # Create a hashtable to store needed_num : (first_num, second_num)
+    # Create a hashtable to store the third number as a key to the values of the other two numbers ([3:1,2])
     hashtable = {}
-    # Create a list to return
-    sums = set()
+    # Create a list to return the values after converted without dupes
+    sum_list = set()
 
-    # Loop through arr
-    for i in range(len(arr) - 1):
-        for j in range(1, len(arr)):
-            if arr[i] == arr[j]:
+    # Double loop through the arr to compare all numbers
+    for i in arr:
+        for j in arr:
+
+            # Pass over if same num
+            if i == j:
                 continue
-            # Add both nums and subtract from target
-            needed_num = target - (arr[i] + arr[j])
-            # Store key:value in hash
-            hashtable[needed_num] = [arr[i], arr[j]]
 
-    # Loop one more time...
-    for i in range(len(arr)):
-        # check if key is in arr
-        if arr[i] in hashtable:
-            # number in arr is not in the hashtable arr value(must be distinct)
-            if arr[i] not in hashtable[arr[i]]:
-                # form list and sort
-                sum = hashtable[arr[i]].copy()
-                sum.append(arr[i])
-                sum = sorted(sum)
-                # Add to set
-                sums.add(tuple(sum))
-    # Convert set into list
-    sums = list(sums)
-    # Convert tuples in list
-    sums = [list(tup) for tup in sums]
-    # print(sorted(sums))
-    return sorted(sums)
+            # To get the third_num, we'll add both i and j and subtract it from the *target
+            third_num = target - (i + j)
+            # Then store them in the hashtable as the key:value pair ([3:1,2])
+            hashtable[third_num] = [i, j]
+            # print(hashtable)
 
+    # Looping a second time
+    for i in arr:
 
-threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0)
+        # Check if the nums from the arr, [i as key], are in the hashtable [key]
+        if i in hashtable:
 
+            # Then check to see that arr[i] isn't in the hashtable arr value, each number must be distinct
+            if i not in hashtable[i]:
+                # Setting new_list to the values of the 3rd number ([#:1,2])
+                new_list = hashtable[i]
+                # Taking the key, 3rd number, and appending it to new_list ([1,2,3])
+                new_list.append(i)
+                # Sorting new_list so it's in order
+                new_list = sorted(new_list)
+                # Adding new_list as a Tuple into sum_list to remove dupes
+                sum_list.add(tuple(new_list))
 
+    # Converting the Tuples back into list format
+    sum_list = [list(tup) for tup in sum_list]
 
-
+    return sorted(sum_list)
 
 
-
+print(threeNumberSum([12, 3, 1, 2, -6, 5, 0, -8, -1, 6, -5], 0)) #<---------- [[-8, 2, 6], [-8, 3, 5], [-6, 0, 6], [-6, 1, 5], [-5, -1, 6], [-5, 0, 5], [-5, 2, 3], [-1, 0, 1]]
+# print(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0)) #<---------- [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
 
