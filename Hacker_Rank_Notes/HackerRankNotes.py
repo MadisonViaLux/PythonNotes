@@ -443,3 +443,25 @@ print(threeNumberSum([12, 3, 1, 2, -6, 5, 0, -8, -1, 6, -5], 0)) #<---------- [[
 
 
 
+
+
+
+
+
+
+# def linkedList(head):
+#     current_head = head.data
+#     next_node = head.next
+#     while current_head != None:
+#         if current_head == next_node:
+#             # skep over the dup value
+#             next_node = next_node.next
+#         else:
+#             current_head = next_node
+#         return current_head
+
+
+
+
+
+
