@@ -96,7 +96,6 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
         # We want to basically compare the current Item and move over and compare the next item (I dropped using the
         # "set_light_on/off" to simplify)
         while True:
