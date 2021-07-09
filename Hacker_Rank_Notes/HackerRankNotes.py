@@ -420,30 +420,24 @@
 # # print(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0)) #<---------- [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
 
 
-def threeNumberSum(arr, target):
-    new_list = set()
-    for i in arr:
-        for j in arr:
-            if i == j:
-                continue
-            third_num = target - (i + j)
-            paired = [i, j]
-            if third_num in arr:
-                if third_num not in paired:
-                    list_nums = [i, j, third_num]
-                    new_list.add(tuple(sorted(list_nums)))
-    new_list = [list(tup) for tup in new_list]
-    return sorted(new_list)
-
-
-print(threeNumberSum([12, 3, 1, 2, -6, 5, 0, -8, -1, 6, -5], 0)) #<---------- [[-8, 2, 6], [-8, 3, 5], [-6, 0, 6], [-6, 1, 5], [-5, -1, 6], [-5, 0, 5], [-5, 2, 3], [-1, 0, 1]]
+# def threeNumberSum(arr, target):
+#     new_list = set()
+#     for i in arr:
+#         for j in arr:
+#             if i == j:
+#                 continue
+#             third_num = target - (i + j)
+#             paired = [i, j]
+#             if third_num in arr:
+#                 if third_num not in paired:
+#                     list_nums = [i, j, third_num]
+#                     new_list.add(tuple(sorted(list_nums)))
+#     new_list = [list(tup) for tup in new_list]
+#     return sorted(new_list)
+#
+#
+# print(threeNumberSum([12, 3, 1, 2, -6, 5, 0, -8, -1, 6, -5], 0)) #<---------- [[-8, 2, 6], [-8, 3, 5], [-6, 0, 6], [-6, 1, 5], [-5, -1, 6], [-5, 0, 5], [-5, 2, 3], [-1, 0, 1]]
 # print(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0)) #<---------- [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
-
-
-
-
-
-
 
 
 
@@ -458,7 +452,36 @@ print(threeNumberSum([12, 3, 1, 2, -6, 5, 0, -8, -1, 6, -5], 0)) #<---------- [[
 #             current_head = next_node
 #         return current_head
 
+import math
+import os
+import random
+import re
+import sys
 
+
+
+#
+# Complete the 'fizzBuzz' function below.
+#
+# The function accepts INTEGER n as parameter.
+#
+
+def fizzBuzz(n):
+    for i in range(1, n+1):
+        if(i % 3 == 0) and (i % 5 == 0):
+            print("FizzBuzz")
+        elif(i % 3 == 0):
+            print("Fizz")
+        elif(i % 5 == 0):
+            print("Buzz")
+        else:
+            print(i)
+
+fizzBuzz(46)
+
+# if __name__ == '__main__':
+#     n = int(input().strip())
+#     fizzBuzz(16)
 
 
 
